@@ -6,56 +6,67 @@ import javax.persistence.*;
 @Table(name = "users")
 public class User {
 
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long id;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "car_id", referencedColumnName = "id")
+    private Car car;
 
-   @Column(name = "name")
-   private String firstName;
+    public Car getCar() { return car; }
+    public void setCar(Car car) { this.car = car; }
 
-   @Column(name = "last_name")
-   private String lastName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-   @Column(name = "email")
-   private String email;
+    @Column(name = "name")
+    private String firstName;
 
-   public User() {}
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "email")
+    private String email;
+
+    public User() {}
    
-   public User(String firstName, String lastName, String email) {
+    public User(String firstName, String lastName, String email) {
       this.firstName = firstName;
       this.lastName = lastName;
       this.email = email;
-   }
+    }
 
-   public Long getId() {
+    public Long getId() {
       return id;
    }
 
-   public void setId(Long id) {
+    public void setId(Long id) {
       this.id = id;
    }
 
-   public String getFirstName() {
+    public String getFirstName() {
       return firstName;
    }
 
-   public void setFirstName(String firstName) {
+    public void setFirstName(String firstName) {
       this.firstName = firstName;
    }
 
-   public String getLastName() {
+    public String getLastName() {
       return lastName;
    }
 
-   public void setLastName(String lastName) {
+    public void setLastName(String lastName) {
       this.lastName = lastName;
    }
 
-   public String getEmail() {
+    public String getEmail() {
       return email;
    }
 
-   public void setEmail(String email) {
+    public void setEmail(String email) {
       this.email = email;
    }
+
+    public String getName() {
+        return "";
+    }
 }
