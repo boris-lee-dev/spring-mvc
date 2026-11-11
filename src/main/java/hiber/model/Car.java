@@ -34,6 +34,14 @@ public class Car {
     public int getSeries() { return series; }
     public void setSeries(int series) { this.series = series; }
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "model='" + model + '\'' +
+                ", series=" + series +
+                '}';
+    }
+
 
 
 }
